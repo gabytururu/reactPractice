@@ -15,6 +15,8 @@ const Blogs = ({blogs, title, handleDelete})=> {
                 <div className="blog-preview" key={blog.id}>
                     <h2>{blog.title}</h2>
                     <p>Written by: {blog.author}</p>
+                    <p>testing unexistent endpoint {blog.test}</p>
+                    <p>testing calling body {blog.body}</p>
                     <button onClick={()=>{handleDelete(blog.id)}}>delete</button>
                 </div>
             ))} 

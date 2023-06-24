@@ -12,5 +12,19 @@
             "author": "yoshi",
             "id": 2
         }
+    ],
+    "people":[
+        {
+            "name":"gaby",
+            "title": "ceo",
+            "mojo": "try as you might you cant beat reality",
+            "id":1
+        },
+        {
+            "name":"lilo",
+            "title": "VP Developement",
+            "mojo":"just do it",
+            "id":2
+        }
     ]
 }
