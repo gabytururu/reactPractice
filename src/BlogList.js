@@ -1,4 +1,4 @@
-import {useState} from 'react'
+//import {useState} from 'react'
 
 const Blogs = ({blogs, title, handleDelete})=> {
 // const Blogs = (props) => {
@@ -17,6 +17,7 @@ const Blogs = ({blogs, title, handleDelete})=> {
                     <p>Written by: {blog.author}</p>
                     <p>testing unexistent endpoint {blog.test}</p>
                     <p>testing calling body {blog.body}</p>
+                    commenting bc is now broken since the class#20 bc useState hooks were moved to useFetch customHook
                     <button onClick={()=>{handleDelete(blog.id)}}>delete</button>
                 </div>
             ))} 

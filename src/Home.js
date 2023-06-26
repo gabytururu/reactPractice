@@ -1,5 +1,7 @@
 import {useState, useEffect} from 'react'
 import Blogs from './BlogList'
+import useFetch from './useFetch'
+
 
 const Home = () => {
 
@@ -11,15 +13,21 @@ const Home = () => {
 
     const [nombre, setNombre] = useState('mario')
     const [age, setAge] = useState(30)
-    const [blogs, setBlogs] = useState(null)  
-    const [isPending, setIsPending] = useState(true)
-    const [error, setError] = useState(null)
+
+    // class#20 - sent to useFetch customHook
+    // const [blogs, setBlogs] = useState(null)  
+    // const [isPending, setIsPending] = useState(true)
+    // const [error, setError] = useState(null)
+
+    const {data: blogs, isPending, error} = useFetch('http://localhost:8000/blogs')
     
-    const handleDelete =(id)=>{
-        const remainingBlogs = blogs.filter((blogs)=>blogs.id !== id)
-        setBlogs(remainingBlogs)
-    }
+    //queda sin funcionar en CLASE 20 (porque movi los hooks de setBlogs y otros al custom Hook useFetch)
+    // const handleDelete =(id)=>{
+    //     const remainingBlogs = blogs.filter((blogs)=>blogs.id !== id)
+    //     setBlogs(remainingBlogs)
+    // }
     let name = 'Gaby'
+    const [country, setCountry] = useState('Mexico')
 
     const handleHookChangeName =()=>{
         setNombre('luigi')
@@ -38,40 +46,41 @@ const Home = () => {
     const handleClickAgain = (name,e) =>{
         console.log('hello baby',  name, e.target)
     }
+    // sent to use Fetch customHook
+    // const [country, setCountry] = useState('Mexico')
 
-    const [country, setCountry] = useState('Mexico')
-
-    useEffect(()=>{
-        //commenting for class17 bc if not it creates an error given that the starting value of "blogs" (useState(null)) is null.. and so this cannot be rendered -- or instead of commenting i can CONDITIONAL them with && wow!!
-        blogs&&console.log('use Effect ran and rendered')
-        blogs&&console.log('list of remaining blogs-->', blogs)
-        // setting timeout ONLY TO simulate loading -- asyncmoch style :D - OBVIO ESTO EN LA REALIDAD NO SE DEBE HACER... 
-        setTimeout(()=>{
-            fetch('http://localhost:8000/blogs')
-            .then(res => {
-                console.log(res)
-                if(!res.ok){
-                    throw Error('no se pudo Fetchear la data que pediste')
-                }
-                return res.json()
-            })
-            .then((data)=>{
-                console.log(data)
-                // i can USE HERE THE SET STATE HOOK WITHOUT CREATING INFINITE LOOP!! :D
-                //this is ONLY bc there is a DEPENDENCY THERE that prevents the infinite action
-                setBlogs(data)
-                setIsPending(false)
-                setError(null)
-            })
-            .catch(err=>{
-                console.log('el error fue que: ', err.message)
-                setBlogs(null)
-                setIsPending(false)
-                setError(err.message)
+// commented class#20 bc we sent it to customHook useFetch
+    // useEffect(()=>{
+    //     //commenting for class17 bc if not it creates an error given that the starting value of "blogs" (useState(null)) is null.. and so this cannot be rendered -- or instead of commenting i can CONDITIONAL them with && wow!!
+    //     blogs&&console.log('use Effect ran and rendered')
+    //     blogs&&console.log('list of remaining blogs-->', blogs)
+    //     // setting timeout ONLY TO simulate loading -- asyncmoch style :D - OBVIO ESTO EN LA REALIDAD NO SE DEBE HACER... 
+    //     setTimeout(()=>{
+    //         fetch('http://localhost:8000/blogs')
+    //         .then(res => {
+    //             console.log(res)
+    //             if(!res.ok){
+    //                 throw Error('no se pudo Fetchear la data que pediste')
+    //             }
+    //             return res.json()
+    //         })
+    //         .then((data)=>{
+    //             console.log(data)
+    //             // i can USE HERE THE SET STATE HOOK WITHOUT CREATING INFINITE LOOP!! :D
+    //             //this is ONLY bc there is a DEPENDENCY THERE that prevents the infinite action
+    //             setBlogs(data)
+    //             setIsPending(false)
+    //             setError(null)
+    //         })
+    //         .catch(err=>{
+    //             console.log('el error fue que: ', err.message)
+    //             setBlogs(null)
+    //             setIsPending(false)
+    //             setError(err.message)
                 
-            })
-        },2000)        
-    },[country])
+    //         })
+    //     },2000)        
+    // },[country])
     
     return (
         <div className="home">
@@ -88,8 +97,11 @@ const Home = () => {
             {/* adding && for class 17 so that it waits for the blogs async value to be returned once the fetch method concludes.. bc if not, it throws an error */}
             {error && <div style={{backgroundColor:'blue', color: 'white', fontSize:'32px',height:'80px'}}>{error}</div>}
             {isPending && <div style={{backgroundColor:'red', fontSize:'45px', color:'white'}}>Loading...</div>}
-            {blogs&& <Blogs blogs={blogs} title={'hella nuevo titulo en props'} handleDelete={handleDelete}/>}
-            {blogs&&<Blogs blogs={blogs.filter((blog)=>blog.author === 'paquito')} title={'lOS BLOGS de Paquito'} handleDelete={handleDelete} />}
+
+            {/* //queda sin funcionar en clase20 pq handle delete trabaja con el hook setblogs que en clase20 se mueve a useFetch custom hoook.. veremos como lo resuelve shaun */}
+             {blogs&& <Blogs blogs={blogs} title={'hella nuevo titulo en props'} />}
+            {/* {blogs&& <Blogs blogs={blogs} title={'hella nuevo titulo en props'} handleDelete={handleDelete}/>} */}
+            {/* {blogs&&<Blogs blogs={blogs.filter((blog)=>blog.author === 'paquito')} title={'lOS BLOGS de Paquito'} handleDelete={handleDelete} />} */}
             <hr></hr>
             <h2>Usando Use Effect Dependencies</h2>
             <p>El pais es {country}</p>
