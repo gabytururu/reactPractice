@@ -2,6 +2,8 @@
 // import './App.css';
 import Navbar from './Navbar'
 import Home from './Home'
+import Create from './Create'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 function App() {
   const titleh1 = 'Welcome to your New React Blog'
@@ -11,30 +13,44 @@ function App() {
 
   const dynamicLink = "http://www.google.com"
   return (
-    <div className="App">
-      <Navbar />     
-      <div className="content">
-        <Home />
-        <hr></hr>
-        <h1>Learning React</h1>
-        <h2>Calling Dynamic Values from logic ABOVE inside this component</h2>
-        <h3>{titleh1}</h3>
-        <p>Liked {likes} times</p>
-        <p>{person.name}</p>
-        <p>{array}</p>
+    <Router>
+      <div className="App">
+        <Navbar /> 
 
-        <h2>Dynamic Values directly inside curly brakcets</h2>
-        <p>{10}</p>
-        <p>{'hello ninjas'}</p>
-        <p>{[1,2,3,4,5]}</p>
-        <p>{25+5}</p>
-        <p>{Math.random()*10}</p>
+        <div className="content">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/create">
+              <Create />
+            </Route>
+          </Switch>
+         
 
-        <h2>Using DYNAMIC VALUES as Attribute Values in Element Tags</h2>
-        <a href={dynamicLink}>Google Site</a>
+          <hr></hr>
+          <hr></hr>
+          <hr></hr>
+          <h1>Learning React</h1>
+          <h2>Calling Dynamic Values from logic ABOVE inside this component</h2>
+          <h3>{titleh1}</h3>
+          <p>Liked {likes} times</p>
+          <p>{person.name}</p>
+          <p>{array}</p>
+
+          <h2>Dynamic Values directly inside curly brakcets</h2>
+          <p>{10}</p>
+          <p>{'hello ninjas'}</p>
+          <p>{[1,2,3,4,5]}</p>
+          <p>{25+5}</p>
+          <p>{Math.random()*10}</p>
+
+          <h2>Using DYNAMIC VALUES as Attribute Values in Element Tags</h2>
+          <a href={dynamicLink}>Google Site</a>
+        </div>
+
       </div>
-
-    </div>
+    </Router>
   );
 }
 
