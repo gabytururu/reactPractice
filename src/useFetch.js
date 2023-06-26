@@ -11,12 +11,14 @@ const useFetch = (url) =>{
 
 
     useEffect(()=>{
+        const abortCont = new AbortController()
+
         // i can CONDITIONAL them with && wow!!
         // blogs&&console.log('use Effect ran and rendered')
         // blogs&&console.log('list of remaining blogs-->', blogs)
         // setting timeout ONLY TO simulate loading -- asyncmoch style :D - OBVIO ESTO EN LA REALIDAD NO SE DEBE HACER... 
         setTimeout(()=>{
-            fetch(url)
+            fetch(url, {signal: abortCont.signal})
             .then(res => {
                 console.log(res)
                 if(!res.ok){
@@ -37,14 +39,25 @@ const useFetch = (url) =>{
             })
             .catch(err=>{
                 console.log('el error fue que: ', err.message)
-                //changed setBlogs for setData
-                setData(null)
-                //setBlogs(null)
-                setIsPending(false)
-                setError(err.message)
+                console.log('el nombre del error:', err.name)
+
+                if(err.name==='AbortError'){
+                    console.log('fetch aborted by cleanup Function')
+                }else{
+                    //changed setBlogs for setData
+                    setData(null)
+                    //setBlogs(null)
+                    setIsPending(false)
+                    setError(err.message)
                 
+                }
+               
             })
-        },2000)        
+        },2000)       
+        
+        // setting a return for the useEffect Cleanup class#24
+        return () => abortCont.abort()
+        // return () => console.log('CLEANUP FUNCTION Bc component has unmounted')
     },[url])
 
     return {data, isPending, error}
