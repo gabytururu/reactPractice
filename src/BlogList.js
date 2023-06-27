@@ -1,4 +1,5 @@
 //import {useState} from 'react'
+import { Link } from "react-router-dom";
 
 const Blogs = ({blogs, title, handleDelete})=> {
 // const Blogs = (props) => {
@@ -13,12 +14,14 @@ const Blogs = ({blogs, title, handleDelete})=> {
             <h2>{title}</h2>
             {blogs.map((blog) => (
                 <div className="blog-preview" key={blog.id}>
-                    <h2>{blog.title}</h2>
-                    <p>Written by: {blog.author}</p>
-                    <p>testing unexistent endpoint {blog.test}</p>
-                    <p>testing calling body {blog.body}</p>
-                    commenting bc is now broken since the class#20 bc useState hooks were moved to useFetch customHook
-                    <button onClick={()=>{handleDelete(blog.id)}}>delete</button>
+                    <Link to={`/blogs/${blog.id}`}>
+                        <h2>{blog.title}</h2>
+                        <p>Written by: {blog.author}</p>
+                        <p>testing unexistent endpoint {blog.test}</p>
+                        <p>testing calling body {blog.body}</p>
+                        commenting bc is now broken since the class#20 bc useState hooks were moved to useFetch customHook
+                        <button onClick={()=>{handleDelete(blog.id)}}>delete</button>                    
+                    </Link>                   
                 </div>
             ))} 
         </div>
