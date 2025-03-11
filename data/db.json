@@ -1,30 +1,84 @@
 {
-    "blogs":[
-        {
-            "title": "my first blog",
-            "body": "why do we use it ? \nIt is a long established fact that the reader will be distracted by bla ble bli blo blu",
-            "author": "mario",
-            "id": 1
-        },
-        {
-            "title": "my second blog",
-            "body": "why do we use it ? \nIt is a long established fact that the reader will be distracted by bla ble bli blo blu",
-            "author": "yoshi",
-            "id": 2
-        }
-    ],
-    "people":[
-        {
-            "name":"gaby",
-            "title": "ceo",
-            "mojo": "try as you might you cant beat reality",
-            "id":1
-        },
-        {
-            "name":"lilo",
-            "title": "VP Developement",
-            "mojo":"just do it",
-            "id":2
-        }
-    ]
+  "blogs": [
+    {
+      "title": "my first blog",
+      "body": "why do we use it ? \nIt is a long established fact that the reader will be distracted by bla ble bli blo blu",
+      "author": "mario",
+      "id": 1
+    },
+    {
+      "title": "my second blog",
+      "body": "why do we use it ? \nIt is a long established fact that the reader will be distracted by bla ble bli blo blu",
+      "author": "yoshi",
+      "id": 2
+    },
+    {
+      "title": "a ver que pasa",
+      "body": "ñafa  as  ñas l asdf   añslfd asdlf aañsldfa ",
+      "author": "yoshi",
+      "id": 7
+    },
+    {
+      "title": "helloasdfasdf",
+      "body": "asdfasdf",
+      "author": "yoshi",
+      "id": 8
+    },
+    {
+      "title": "helloasdfasdf",
+      "body": "asdfasdf",
+      "author": "yoshi",
+      "id": 9
+    },
+    {
+      "title": "helloasdfasdf",
+      "body": "asdfasdf",
+      "author": "yoshi",
+      "id": 10
+    },
+    {
+      "title": "helloasdfasdf",
+      "body": "asdfasdfasdf",
+      "author": "yoshi",
+      "id": 12
+    },
+    {
+      "title": "helloasdfasdf",
+      "body": "asdfasdf",
+      "author": "yoshi",
+      "id": 13
+    },
+    {
+      "title": "helloasdfasdf",
+      "body": "asdfasdfasdf",
+      "author": "yoshi",
+      "id": 14
+    },
+    {
+      "title": "helloasdfas",
+      "body": "dfasfdasdf",
+      "author": "yoshi",
+      "id": 15
+    },
+    {
+      "title": "hello",
+      "body": "asdfasdf",
+      "author": "yoshi",
+      "id": 16
+    }
+  ],
+  "people": [
+    {
+      "name": "gaby",
+      "title": "ceo",
+      "mojo": "try as you might you cant beat reality",
+      "id": 1
+    },
+    {
+      "name": "lilo",
+      "title": "VP Developement",
+      "mojo": "just do it",
+      "id": 2
+    }
+  ]
 }

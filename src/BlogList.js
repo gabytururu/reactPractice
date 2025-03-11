@@ -20,7 +20,7 @@ const Blogs = ({blogs, title, handleDelete})=> {
                         <p>testing unexistent endpoint {blog.test}</p>
                         <p>testing calling body {blog.body}</p>
                         commenting bc is now broken since the class#20 bc useState hooks were moved to useFetch customHook
-                        <button onClick={()=>{handleDelete(blog.id)}}>delete</button>                    
+                        {/* <button onClick={()=>{handleDelete(blog.id)}}>delete</button>                     */}
                     </Link>                   
                 </div>
             ))} 
